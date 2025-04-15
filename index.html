@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamgram ✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at center, #ffadf0 0%, #a2faff 40%, #fffb92 100%);
+      overflow-x: hidden;
+      color: white;
+      animation: hueShift 10s linear infinite;
+    }
+
+    @keyframes hueShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      background-size: 300px 300px;
+      z-index: -1;
+      animation: drift 60s linear infinite, pulse 5s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0% {background-position: 0 0;}
+      100% {background-position: 1000px 1000px;}
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    header {
+      padding: 2rem;
+      text-align: center;
+      font-size: 3rem;
+      text-shadow: 0 0 20px #fff, 0 0 40px #ff00ff;
+      animation: glowTitle 3s ease-in-out infinite;
+    }
+
+    @keyframes glowTitle {
+      0%, 100% { text-shadow: 0 0 20px #fff, 0 0 40px #ff00ff; }
+      50% { text-shadow: 0 0 30px #fff, 0 0 60px #00ffff; }
+    }
+
+    .feed {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .post {
+      width: 250px;
+      height: 250px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #fff;
+      border-radius: 30px;
+      box-shadow: 0 0 20px #fff8;
+      overflow: hidden;
+      position: relative;
+      animation: floaty 6s ease-in-out infinite;
+      backdrop-filter: blur(4px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .post:hover {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.4),
+        0 0 40px rgba(0, 255, 255, 0.3),
+        0 0 80px rgba(255, 0, 255, 0.4);
+      z-index: 2;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .music-bubble {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(255, 0, 255, 0.2);
+      border: 2px solid white;
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgb(255, 0, 255);
+      z-index: 999;
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #toggle-mute {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .fullscreen {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90vw;
+      height: 90vh;
+      z-index: 1000;
+      background: black;
+      border-radius: 20px;
+      box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+    }
+
+    .fullscreen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+    }
+ 
+  </style>
+</head>
+<body>
+  <div class="sky"></div>
+  <header>DREAMGRAM</header>
+
+  <section class="feed" id="video-feed">
+    <div class="post" data-src="https://www.youtube.com/embed/aFrQIJ5cbRc?autoplay=1&mute=1&loop=1&playlist=aFrQIJ5cbRc"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/aFrQIJ5cbRc?autoplay=0&loop=1&playlist=aFrQIJ5cbRc" title="Dreamgram 1" frameborder="0" allowfullscreen></iframe><div class="caption">🎥 Dreamgram Theater 1</div></div>
+    <div class="post" data-src="https://www.youtube.com/embed/j6tKIdt9K9M?autoplay=1&mute=1&loop=1&playlist=j6tKIdt9K9M"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/j6tKIdt9K9M?autoplay=0&loop=1&playlist=j6tKIdt9K9M" title="Dreamgram 3" frameborder="0" allowfullscreen></iframe><div class="caption">🎥 Dreamgram Theater 3</div></div>
+   
+  </section>
+
+  <div class="music-bubble">
+    <iframe id="ytplayer" type="text/html" width="0" height="0" src="https://www.youtube.com/embed/jP6K0l5I9ZI?autoplay=1&mute=1&loop=1&playlist=jP6K0l5I9ZI" frameborder="0" allow="autoplay"></iframe>
+    <button id="toggle-mute">🔇</button>
+  </div>
+
+  <script>
+    let isMuted = true;
+    const btn = document.getElementById("toggle-mute");
+    const player = document.getElementById("ytplayer");
+
+    btn.addEventListener("click", () => {
+      player.contentWindow.postMessage(
+        JSON.stringify({ event: "command", func: isMuted ? "unMute" : "mute", args: [] }),
+        "*"
+      );
+      isMuted = !isMuted;
+      btn.textContent = isMuted ? "🔇" : "🔊";
+    });
+
+    document.querySelectorAll('.post').forEach(post => {
+      post.addEventListener('click', () => {
+        const src = post.getAttribute('data-src');
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+
+        const modal = document.createElement('div');
+        modal.className = 'fullscreen';
+        modal.innerHTML = `<iframe src="${src}" allowfullscreen></iframe>`;
+
+        overlay.addEventListener('click', () => {
+          document.body.removeChild(overlay);
+          document.body.removeChild(modal);
+        });
+
+        document.body.appendChild(overlay);
+        document.body.appendChild(modal);
+      });
+    });
+  </script>
+</body>
+</html>
+
